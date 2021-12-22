@@ -1,17 +1,21 @@
 import "./ExpenseItem.css";
 
-function ExpenseItem() {
-  const today = new Date();
-  const expenseDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-  const expenseTitle = "Party";
-  const expenseamount = 100000.00;
+function ExpenseItem(props) {
+
+  const month = props.date.toLocaleDateString('en-US',{month: 'long'});
+  const day = props.date.toLocaleDateString('en-US',{day: '2-digit'});
+  const year = props.date.getFullYear();
 
   return (
     <div className="expense-item ">
-      <div>{expenseDate}</div>
+      <div>
+        <div>{month}</div>
+        <div>{day}</div>
+        <div>{year}</div>
+      </div>
       <div className="iexpense-item__description">
-        <h2>{expenseTitle}</h2>
-        <div className="expense-item__price">£{expenseamount}</div>
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">£{props.amount}</div>
       </div>
     </div>
   );
