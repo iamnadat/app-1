@@ -6,7 +6,7 @@ import ExpensesFilter from "./ExpenseFilter";
 import "./Expenses.css";
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState("2021");
+  const [filteredYear, setFilteredYear] = useState("2022");
 
   const filterChangedHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
@@ -18,7 +18,23 @@ const Expenses = (props) => {
       value used in component is passed to a parent component 
       and is recieved from parent component
       the expenses component CONTROLLS the expensefilter component */}
-      <ExpensesFilter selected={filteredYear} onFilterChanged={filterChangedHandler} />
+      <ExpensesFilter
+        selected={filteredYear}
+        onFilterChanged={filterChangedHandler}
+      />
+      {/* dynamic way of rendering ExpenseItem */}
+      {props.expenses.map((expenses) => {
+        return (
+          <ExpenseItem
+            key={expenses.id}
+            title={expenses.title}
+            amount={expenses.amount}
+            date={expenses.date}
+          />
+        );
+      })}
+      {/* static way of rendering ExpenseItems */}
+      {/* 
       <ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].amount}
@@ -38,7 +54,7 @@ const Expenses = (props) => {
         title={props.expenses[3].title}
         amount={props.expenses[3].amount}
         date={props.expenses[3].date}
-      />
+      /> */}
     </Card>
   );
 };
