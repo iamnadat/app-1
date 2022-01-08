@@ -51,7 +51,8 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate),
     };
 
-    console.log(expenseData);
+    // pass expenseData to parent object using the function that is defined in NewExpense.js
+    props.onSaveExpenseData(expenseData)
 
     // use two way bindign to set the value of fileds back to ""
     setEnteredTitle("");
