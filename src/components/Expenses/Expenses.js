@@ -1,10 +1,24 @@
+import { useState } from "react";
+
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
+import ExpensesFilter from "./ExpenseFilter";
 import "./Expenses.css";
 
 const Expenses = (props) => {
+  const [filteredYear, setFilteredYear] = useState("2021");
+
+  const filterChangedHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
   return (
     <Card className="expenses">
+      {/* controlled component
+      value used in component is passed to a parent component 
+      and is recieved from parent component
+      the expenses component CONTROLLS the expensefilter component */}
+      <ExpensesFilter selected={filteredYear} onFilterChanged={filterChangedHandler} />
       <ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].amount}
