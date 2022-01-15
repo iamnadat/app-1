@@ -21,13 +21,13 @@ const DUMMY_EXPENSES = [
   {
     id: "e4",
     title: "New Desk (Wooden)",
-    amount: 450,
+    amount: 450.00,
     date: new Date(2021, 5, 12),
   },
 ];
 
 const App = () => {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense) => {
     console.log("app.js", expense);
